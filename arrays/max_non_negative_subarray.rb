@@ -1,41 +1,25 @@
 def maxset(a)
   max_sum = 0
-  max_sub_start = 0
   max_subarray = []
 
   curr_sum = 0
-  curr_start = 0
   curr_subarray = []
+
+  a[a.length] = -1
 
   a.each_with_index do |num, i|
     if num.negative?
       if curr_sum > max_sum
         max_sum = curr_sum
-        max_sub_start = curr_start
         max_subarray = curr_subarray
       elsif curr_sum == max_sum
-        if curr_subarray.length > max_subarray.length
-          max_subarray = curr_subarray
-          max_sub_start = curr_start
-        end
+        max_subarray = curr_subarray if curr_subarray.length > max_subarray.length
       end
       curr_sum = 0
-      curr_start = i+1
       curr_subarray = []
     else
       curr_sum += num
       curr_subarray << num
-    end
-  end
-
-  if curr_sum > max_sum
-    max_sum = curr_sum
-    max_sub_start = curr_start
-    max_subarray = curr_subarray
-  elsif curr_sum == max_sum
-    if curr_subarray.length > max_subarray.length
-      max_subarray = curr_subarray
-      max_sub_start = curr_start
     end
   end
 
