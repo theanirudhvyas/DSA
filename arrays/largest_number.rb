@@ -25,6 +25,16 @@ def greater_than(num1, num2)
   end
 end
 
+### v2, instead of doing all the shebang above, we can just append the 2 numbers and compare them. :facepalm
+
+def greater_than_v2(num1, num2)
+  if [num1, num2].join.to_i > [num2, num1].join.to_i
+    true
+  else
+    false
+  end
+end
+
 def merge(array1, array2)
 
   result = []
@@ -32,7 +42,7 @@ def merge(array1, array2)
   j = 0
 
   while i < array1.length and j < array2.length
-    if greater_than(array1[i], array2[j])
+    if greater_than_v2(array1[i], array2[j])
       result << array1[i]
       i+=1
     else
