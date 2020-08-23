@@ -1,7 +1,6 @@
 
 def solve(a, b)
   
-  sum = 0
   total_sum = b.reduce(:+)
 
   return 0 unless total_sum%3 == 0
@@ -35,6 +34,31 @@ def solve(a, b)
   return count
 end
 
+
+### v2
+
+def solve_v2(a, b)
+  total_sum = b.reduce(:+)
+
+  return 0 unless total_sum % 3 == 0
+
+  target = total_sum/3
+  sum = 0
+  count = 0
+  result = 0
+
+  b.each do |num|
+    sum += num
+    if sum == target*2
+      result += count
+    end
+    if sum == target
+      count += 1
+    end
+  end
+  return result
+end
+
 input_arr1 = [1, 2, 3, 0, 3]
 input_len1 = input_arr1.length
 
@@ -42,5 +66,5 @@ input_arr2 = [0, 1, -1, 0]
 input_len2 = input_arr2.length
 
 
-pp solve(input_len1, input_arr1)
-pp solve(input_len2, input_arr2)
+#pp solve_v2(input_len1, input_arr1)
+pp solve_v2(input_len2, input_arr2)
