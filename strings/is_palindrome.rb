@@ -14,5 +14,11 @@ def is_palindrome?(string)
   return true
 end
 
+
+def is_palindrome_v2?(string)
+  sanitized_string = string.downcase.delete('^a-z0-9')
+  sanitized_string == sanitized_string.reverse ? true : false
+end
+
 # https://www.interviewbit.com/problems/palindrome-string/
 
