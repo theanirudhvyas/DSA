@@ -28,6 +28,7 @@ def balance_brackets(string)
     end
   end
 
+  return false if stack.any?
   return true
 end
 

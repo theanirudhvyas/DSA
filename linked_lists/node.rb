@@ -1,10 +1,23 @@
 
 class Node
-  attr_accessor :data, :next_node
+  attr_accessor :data, :next
 
   def initialize(data, next_node = nil)
     @data = data
-    @next_node = next_node
+    @next = next_node
+  end
+end
+
+class LList
+  attr_reader :head
+
+  def initialize(array)
+    @head = Node.new(array[0])
+    temp = @head
+    array[1..array.length].each do |num|
+      temp.next = Node.new(num)
+      temp = temp.next
+    end
   end
 end
 
